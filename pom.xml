@@ -12,6 +12,7 @@
         <module>consumer-demo</module>
         <module>eureka-server</module>
         <module>eureka-server-other</module>
+        <module>gateway</module>
     </modules>
     <packaging>pom</packaging>
 

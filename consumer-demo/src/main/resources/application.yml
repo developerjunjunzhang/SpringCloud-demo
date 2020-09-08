@@ -11,6 +11,9 @@ eureka:
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1
+feign:
+  hystrix:
+    enabled: true # 开启feign的熔断功能，默认是关闭的
 # 全局的超时时长配置
 hystrix:
   command:

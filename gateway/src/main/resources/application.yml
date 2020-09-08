@@ -1,0 +1,33 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+# zuul默认会给所有的服务配置好路由，所以以下的路由配可以不用配置，但是有些服务不想暴露的话就需要自己进行手动配置了
+# 访问路径 http://localhost:10010/user-service/user/9
+zuul:
+  routes:
+    user-service: /user-service/** # 一种简化配置 key是服务id，value是路径
+  ignored-services:
+    - consumer-client
+
+
+#    consumer-client: /consumer-client/**
+#    123:
+#      path: /user-service/**
+#      serviceId: user-service
+# 另外还有一种方式用以去除前缀  直接访问路径可以是http://localhost:10010/user/9 ，推荐上面那种
+#zuul:
+#  routes:
+#    user-service:
+#        path: /user/**
+#        serviceId: user-service
+#        strip-prefix: false
+#  # 全局的忽略前缀配置
+#  strip-prefix: false
+#  # 全局的前缀
+#  prefix: /api
